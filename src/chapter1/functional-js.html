@@ -12,14 +12,14 @@
 
 <script type="text/javascript">
     function SimpleWidget(spec) {
-        var instance = {}; // <-- A
+        var instance = {}; // <-- A internal private variable
 
-        var headline, description; // <-- B
+        var headline, description; // <-- B internal private variable
 
         instance.render = function () {
             var div = d3.select('body').append("div");
 
-            div.append("h3").text(headline); // <-- C
+            div.append("h3").text(headline); // <-- C internal private variable
 
             div.attr("class", "box")
                .attr("style", "color:" + spec.color) // <-- D
@@ -30,7 +30,7 @@
         };
 
         instance.headline = function (h) {
-            if (!arguments.length) return headline; // <-- G
+            if (!arguments.length) return headline; // <-- G arguments are a builtin hidden parameter available to functions when invoked
             headline = h;
             return instance; // <-- H
         };
@@ -41,13 +41,15 @@
             return instance;
         };
 
-        return instance; // <-- I
+        return instance; // <-- I returns the object instance for SimpleWidget
     }
 
-    var widget = SimpleWidget({color: "#6495ed"})
-            .headline("Simple Widget")
-            .description("This is a simple widget demonstrating functional javascript.");
+    var widget = SimpleWidget({color: "#6440ed"})
+            .headline("Simple Widget") // set headline
+            .description("This is a super simple widget demonstrating functional javascript.");
     widget.render();
+    console.log(widget.headline()); // gets the variable
+    console.log(d3.version);
 </script>
 
 </body>
