@@ -8,11 +8,3 @@ License
 -------
 
 All source code in this repository are licensed under [MIT license](http://opensource.org/licenses/MIT)
-
-Making a change to this.
-
-Yes, another edit is great.
-
-Here is another change.
-
-I need to make one more edit.
